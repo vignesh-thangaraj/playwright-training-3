@@ -1,24 +1,28 @@
-import { Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 import { SearchPage } from "./SearchPage";
 
 
 export class HomePage {
 
     private page: Page;
+    private searchTextbox: Locator;
+    private sideNavTitle: Locator;
     private searchKeyword: string = 'laptops';
 
     constructor(page: Page){
         this.page = page;
+        this.searchTextbox = page.getByPlaceholder('Search for Products, Brands and More')
+        this.sideNavTitle = page.locator('[title="Dropdown with more help links"]')
     }
 
     selectTitle = async () =>{
-        await this.page.locator('[title="Dropdown with more help links"]').hover()
+        await this.sideNavTitle.hover()
         return this;
     }
 
     searchProduct = async () => {
-        await this.page.getByPlaceholder('Search for Products, Brands and More').fill(this.searchKeyword);
-        await this.page.getByPlaceholder('Search for Products, Brands and More').press('Enter');
+        await this.searchTextbox.fill(this.searchKeyword);
+        await this.searchTextbox.press('Enter');
         return new SearchPage(this.page);
     }
 

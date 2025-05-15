@@ -1,17 +1,22 @@
-import { test, type Page } from '@playwright/test';
-import { HomePage } from '../POM/homepage';
+import { test } from '../fixtures';
+// import { test } from '@playwright/test'
 
 test.describe('flipkart tests', () =>{
 
-    test.beforeEach('launch URL', async ({page}) =>{
-        await page.goto('https://www.flipkart.com/')
+    test.beforeEach('launch URL', async ({page, baseURL}) =>{
+        await page.goto(baseURL || '')
     })
 
-test('search a product', async ({page}) =>{
-    const homePageObject = new HomePage(page)
-    const searchPageObject = await homePageObject.searchProduct()
+test('search a product', async ({page, homePage}) =>{
+    const searchPageObject = await homePage.searchProduct()
     await searchPageObject.selectProduct();
-    await page.pause()
+})
+
+test('order a product', async ({page, homePage}) =>{
+    const searchPageObject = await homePage.searchProduct()
+    await searchPageObject.selectProduct();
+    // Buy now
+    // place order
 })
 
 })
