@@ -1,4 +1,4 @@
-import { Locator, Page } from "@playwright/test";
+import { expect, Locator, Page } from "@playwright/test";
 import { SearchPage } from "./SearchPage";
 
 
@@ -21,8 +21,10 @@ export class HomePage {
     }
 
     searchProduct = async () => {
-        await this.searchTextbox.fill(this.searchKeyword);
+        await this.searchTextbox.fill('Mobiles');
         await this.searchTextbox.press('Enter');
+        let titleTextContent = await this.page.title()
+        expect(titleTextContent.toLowerCase()).not.toContain(this.searchKeyword)
         return new SearchPage(this.page);
     }
 

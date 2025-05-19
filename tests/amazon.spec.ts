@@ -3,7 +3,7 @@ import { test } from '../fixtures';
 
 test.describe('flipkart tests', () =>{
 
-test('search a product - <JIRA ID>', async ({homePage}, testinfo) =>{
+test('search a product - randomtext', async ({homePage}) =>{
     const searchPageObject = await homePage.searchProduct()
     await searchPageObject.selectProduct();
 })
