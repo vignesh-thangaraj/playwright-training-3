@@ -8,9 +8,9 @@ test('search a product - randomtext', async ({homePage}) =>{
     await searchPageObject.selectProduct();
 })
 
-test('order a product', async ({homePage}) =>{
-    const searchPageObject = await homePage.searchProduct()
-    await searchPageObject.selectProduct();
+test('order a product', async ({homePage, searchPage}) =>{
+    await homePage.searchProduct()
+    await searchPage.selectProduct();
     // Buy now
     // place order
 })
