@@ -28,7 +28,7 @@ test('GET request', async ({request}) => {
         },
     })
     expect(patchResponse.status()).toBe(200)
-    let result: responseContent = await patchResponse.json()
+    let result: responseContent1 = await patchResponse.json()
     console.log(result.id)
 
     let deleteResponse = await request.delete(url+'/4')

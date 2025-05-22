@@ -4,7 +4,7 @@ import { SearchPage } from './POM/SearchPage';
 
 export const test = base.extend<{ homePage: HomePage, searchPage: SearchPage}>({
     page: async ({ baseURL, page },use ) => {
-        await page.goto(baseURL || '');
+        await page.goto(baseURL || '', {waitUntil: 'networkidle'});
         // login
         await use(page);
     },
