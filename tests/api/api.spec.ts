@@ -14,7 +14,7 @@ type getResponseData = responseContent1 & responseContent2
 
 test.describe('jsonplaceholder - ', () =>{
 
-test('GET request', async ({request}) => {
+test.only('GET request', async ({request}) => {
     let get = await request.get(url)
     let getResponse: getResponseData = await get.json()
     let userId = getResponse[0].title
