@@ -4,6 +4,7 @@ import { test } from '../fixtures';
 test.describe('flipkart tests', () =>{
 
 test('search a product - randomtext', async ({homePage}) =>{
+    let shared_content = global.mynewVariable;
     const searchPageObject = await homePage.searchProduct()
     await searchPageObject.selectProduct();
 })
