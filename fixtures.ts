@@ -1,6 +1,6 @@
 import { test as base, TestInfo } from '@playwright/test';
-import { HomePage } from './POM/homepage';
-import { SearchPage } from './POM/SearchPage';
+import { HomePage } from '../playwright-training-3/POM/HomePage';
+import { SearchPage } from '../playwright-training-3/POM/SearchPage';
 
 export const test = base.extend<{ homePage: HomePage, searchPage: SearchPage}>({
     page: async ({ baseURL, page },use ) => {
